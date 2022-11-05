@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  api:
+    restart: always
+    container_name: api
+    command : python manage.py runserver
+    # env_file:
+    #   - ./api/api/settings.py
+    build:
+      context: ./api/
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+
+  frontend:
+    restart: always
+    command : npm start
+    container_name: frontend
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    depends_on:
+      - api
