@@ -4,3 +4,4 @@ api/pyenv
 frontend/package-lock.json
 frontend/build
 api/api/__pycache__
+apidb.sqlite3
